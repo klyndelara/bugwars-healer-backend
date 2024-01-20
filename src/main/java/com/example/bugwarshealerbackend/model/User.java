@@ -7,6 +7,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Set;
+
 
 @Data
 @NoArgsConstructor
@@ -44,4 +46,7 @@ public class User {
 
         @Column(name = "activated", nullable = true)
         private boolean activated;
+
+        @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+        private Set<Bug> bugs;
 }
